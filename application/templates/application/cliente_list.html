@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lista de Clientes</title>
+</head>
+<body>
+    <h1>Lista de Clientes</h1>
+    <input type="submit" value="Adicionar Contato" onclick="location.href = '{% url 'application:create' %}'">
+    <ul>
+        {% for cliente in object_list %}
+        <li><a href="{% url 'application:detail' pk=cliente.id %}">{{cliente.nome}}</a> <input type="submit" value="Editar Contato" onclick="{% url 'application:update' pk=cliente.id %}"><input type="submit" value="Excluir Contato" onclick="{% url 'application:delete' pk=cliente.id %}"> </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

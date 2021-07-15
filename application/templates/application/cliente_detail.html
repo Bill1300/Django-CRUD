@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Detalhes de Cliente</title>
+</head>
+<body>
+    <h1>Detalhes de Cliente</h1>
+    <input type="submit" onclick="location.href = '{% url 'application:list' %}'" value="Voltar">
+    <div>
+        <p>Nome Completo: {{ object.nome }}</p>
+        <p>Idade: {{ object.idade  }}</p>
+        <p>Email: {{ object.email }}</p>
+        <p>Telefone: {{ object.telefone }}</p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Deletar Cliente?</title>
+</head>
+<body>
+    <h1>Deletar Cliente?</h1>
+    <p>Voce ter certeza que quer deletar o cliente <b>'{{ object.name }}'</b>?</p>
+    <form method="post">
+        {% csfr_token %}
+        <input type="submit" value="Sim, quero deletar">
+        <input type="reset" onclick="location.href='{% url 'application:list' %}'" value="Cancelar">
+    </form>
+</body>
+</html>
