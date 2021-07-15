@@ -5,17 +5,25 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <title>Lista de Cliente</title>
 </head>
 <body>
-    <h1>Lista de Clientes</h1>
-    <input type="submit" value="Adicionar Cliente" onclick="location.href = '{% url 'application:create' %}'">
-    <ul>
+    <header>
+        <h1 class="lead display-5 text-center">Lista de Clientes</h1>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end mx-auto lead" style="position: relative;">
+            <button type="submit" class="btn btn-success btn-sm" style="margin:16px;" value="Adicionar Cliente" onclick="location.href = '{% url 'application:create' %}'"><i class="fa fa-plus-square" aria-hidden="true"></i> Adicionar Cliente</button>
+        </div>
+    </header>
+    <ul class="list-group">
         {% for cliente in object_list %}
-        <li>
-            <a href="{% url 'application:detail' pk=cliente.id %}">{{cliente.nome}}</a>
-            <input type="submit" value="Editar" onclick="location.href = '{% url 'application:update' pk=cliente.id %}'">
-            <input type="submit" value="Excluir" onclick="location.href = '{% url 'application:delete' pk=cliente.id %}'">
+        <li class="list-group-item">
+            <a class="text-uppercase text-decoration-none lead text-dark" href="{% url 'application:detail' pk=cliente.id %}">{{cliente.nome}}<label class="text-secondary ms-1 text-lowercase">({{ cliente.email }})</label></a>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <button type="submit" class="btn btn-secondary btn-sm" onclick="location.href = '{% url 'application:update' pk=cliente.id %}'">Editar</button>
+                <button type="submit" class="btn btn-danger btn-sm" onclick="location.href = '{% url 'application:delete' pk=cliente.id %}'"><i class="fa fa-times" aria-hidden="true"></i> Excluir</button>
+            </div>
         </li>
         {% endfor %}
     </ul>

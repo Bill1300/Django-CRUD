@@ -5,16 +5,22 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <title>Detalhes de Cliente</title>
 </head>
 <body>
-    <h1>Detalhes de Cliente</h1>
-    <input type="submit" onclick="location.href = '{% url 'application:list' %}'" value="Voltar">
-    <div>
-        <p>Nome Completo: {{ object.nome }}</p>
-        <p>Idade: {{ object.idade  }}</p>
-        <p>Email: {{ object.email }}</p>
-        <p>Telefone: {{ object.telefone }}</p>
+    <header>
+        <h1 class="lead display-5 text-center">Detalhes de Cliente</h1>
+        <button type="submit" class="btn btn-secondary btn-sm" style="margin-left:16px;" onclick="location.href = '{% url 'application:list' %}'"><i class="fa fa-arrow-left" aria-hidden="true"></i> Voltar</button>
+        <input type="submit" class="btn btn-secondary btn-sm" value="Editar" onclick="location.href = '{% url 'application:update' pk=cliente.id %}'">
+        <button type="submit" class="btn btn-danger btn-sm" onclick="location.href = '{% url 'application:delete' pk=cliente.id %}'"><i class="fa fa-times" aria-hidden="true"></i> Excluir</button>
+    </header>
+    <div class="lead" style="margin:16px;">
+        <p><b>Nome Completo:</b> {{ object.nome }}</p>
+        <p><b>Idade:</b> {{ object.idade  }}</p>
+        <p><b>Email:</b> {{ object.email }}</p>
+        <p><b>Telefone:</b> {{ object.telefone }}</p>
     </div>
 </body>
 </html>

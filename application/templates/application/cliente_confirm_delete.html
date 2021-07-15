@@ -5,15 +5,21 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <title>Deletar Cliente?</title>
 </head>
 <body>
-    <h1>Deletar Cliente?</h1>
+    <header>
+        <h1 class="lead display-5 text-center">Deletar Cliente?</h1>
+    </header>
+    <div class="lead text-center" style="margin:16px;">
     <p>Voce ter certeza que quer deletar o cliente <b>'{{ object.nome }}'</b>?</p>
-    <form method="post">
-        {% csrf_token %}
-        <input type="submit" value="Sim, quero deletar">
-        <input type="reset" onclick="location.href='{% url 'application:list' %}'" value="Cancelar">
-    </form>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger btn-sm" onclick="location.href = '{% url 'application:delete' pk=cliente.id %}'"><i class="fa fa-times" aria-hidden="true"></i> Sim, quero deletar</button>
+            <button type="submit" class="btn btn-secondary btn-sm" onclick="location.href = '{% url 'application:list' %}'">Voltar</button>
+        </form>
+    </div>
 </body>
 </html>
