@@ -1,6 +1,6 @@
+from application.models import Cliente
 from django.views.generic import ListView, CreateView, UpdateView, DetailView, DeleteView
 from django.urls import reverse_lazy
-from application.models import Cliente
 
 class ClienteList(ListView):
     model = Cliente
@@ -9,7 +9,7 @@ class ClienteList(ListView):
 class ClienteCreate(CreateView):
     model = Cliente
     fields = '__all__'
-    sucess_url = reverse_lazy('application:list')
+    success_url = reverse_lazy('application:list')
 
 class ClienteUpdate(UpdateView):
     model = Cliente

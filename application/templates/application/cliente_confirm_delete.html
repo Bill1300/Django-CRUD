@@ -9,9 +9,9 @@
 </head>
 <body>
     <h1>Deletar Cliente?</h1>
-    <p>Voce ter certeza que quer deletar o cliente <b>'{{ object.name }}'</b>?</p>
+    <p>Voce ter certeza que quer deletar o cliente <b>'{{ object.nome }}'</b>?</p>
     <form method="post">
-        {% csfr_token %}
+        {% csrf_token %}
         <input type="submit" value="Sim, quero deletar">
         <input type="reset" onclick="location.href='{% url 'application:list' %}'" value="Cancelar">
     </form>
