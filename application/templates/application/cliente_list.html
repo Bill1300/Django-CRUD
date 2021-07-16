@@ -1,31 +1,100 @@
 <!doctype html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-    <title>Lista de Cliente</title>
-</head>
-<body>
-    <header>
-        <h1 class="lead display-5 text-center">Lista de Clientes</h1>
-        <div class="d-grid gap-2 d-md-flex justify-content-md-end mx-auto lead" style="position: relative;">
-            <button type="submit" class="btn btn-success btn-sm" style="margin:16px;" value="Adicionar Cliente" onclick="location.href = '{% url 'application:create' %}'"><i class="fa fa-plus-square" aria-hidden="true"></i> Adicionar Cliente</button>
-        </div>
-    </header>
-    <ul class="list-group">
-        {% for cliente in object_list %}
-        <li class="list-group-item">
-            <a class="text-uppercase text-decoration-none lead text-dark" href="{% url 'application:detail' pk=cliente.id %}">{{cliente.nome}}<label class="text-secondary ms-1 text-lowercase">({{ cliente.email }})</label></a>
-            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                <button type="submit" class="btn btn-secondary btn-sm" onclick="location.href = '{% url 'application:update' pk=cliente.id %}'">Editar</button>
-                <button type="submit" class="btn btn-danger btn-sm" onclick="location.href = '{% url 'application:delete' pk=cliente.id %}'"><i class="fa fa-times" aria-hidden="true"></i> Excluir</button>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+        <title>Lista de Cliente</title>
+        <style>
+        .footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%
+        }
+        </style>
+    </head>
+    <body>
+        <!--Header-->
+        <header>
+            <nav class="navbar navbar-light bg-light">
+              <a class="navbar-brand text-uppercase text-decoration-none lead text-dark" style="margin:0 16px"><i class="fas fa-layer-group"></i> Sistema de Gerenciamento de Clientes em Python usando Django</a>
+              <form class="form-inline" action="{% url 'admin:index' %}">
+                <button class="btn btn-outline-secondary btn-sm" style="margin:0 16px" type="submit" >Entrar</button>
+              </form>
+            </nav>
+            <h1 class="lead display-5 text-center">Lista de Clientes</h1>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end mx-auto lead" style="position: relative;">
+                <button type="submit" class="btn btn-success btn-sm" style="margin:16px;" value="Adicionar Cliente" onclick="location.href = '{% url 'application:create' %}'"><i class="fa fa-plus-square" aria-hidden="true"></i> Adicionar Cliente</button>
             </div>
-        </li>
-        {% endfor %}
-    </ul>
-</body>
+        </header>
+        <!-- /Header -->
+        <!-- Conteudo -->
+        <ul class="list-group">
+            {% for cliente in object_list %}
+            <li class="list-group-item">
+                <a class="text-uppercase text-decoration-none lead text-dark" href="{% url 'application:detail' pk=cliente.id %}">{{cliente.nome}}<label class="text-secondary ms-1 text-lowercase">({{ cliente.email }})</label></a>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <button type="submit" class="btn btn-secondary btn-sm" onclick="location.href = '{% url 'application:update' pk=cliente.id %}'">Editar</button>
+                    <button type="submit" class="btn btn-danger btn-sm" onclick="location.href = '{% url 'application:delete' pk=cliente.id %}'"><i class="fa fa-times" aria-hidden="true"></i> Excluir</button>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+        <!-- /Conteudo -->
+        <!-- Footer -->
+        <footer class="text-center text-lg-start bg-light text-muted footer">
+          <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+            <div class="me-5 d-none d-lg-block">
+              <span>Este projeto esta disponibilizado no GitHub.</span>
+            </div>
+            <div>
+              <a href="https:github.com/bill1300/Django-CRUD" class="me-4 text-reset">
+                <i class="fab fa-github"></i>
+              </a>
+            </div>
+          </section>
+          <section class="">
+            <div class="container text-center text-md-start mt-5">
+              <div class="row mt-3">
+                <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                  <h6 class="text-uppercase fw-bold mb-4">
+                    <i class="fas fa-info-circle me-3"></i>Informações
+                  </h6>
+                  <p>
+                    Projeto de aplicação web à disciplina Desenvolvimento Web como
+                    requisito parcial à conclusão da disciplina, do
+                    Curso de Licenciatura em Computação, Setor
+                    de Palotina, Universidade Federal do Paraná.
+                    <br/>
+                    <br/>
+                    Professor: Anderson Marcolino.
+                  </p>
+                </div>
+                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                  <h6 class="text-uppercase fw-bold mb-4">
+                    Contato
+                  </h6>
+                  <p><i class="fas fa-home me-3"></i>
+                    <a class="text-reset fw-bold text-decoration-none" href="https://Bill1300.github.io">Bill1300.github.io</a>
+                  </p>
+                  <p>
+                    <i class="fas fa-envelope me-3"></i>
+                    <a class="text-reset fw-bold text-decoration-none" href="mailto:gabriel.cerutti00@outlook.com">gabriel.cerutti00@outlook.com</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+          <!-- Barra Final -->
+          <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+            2021
+            <a class="text-reset fw-bold text-decoration-none" href="https://Bill1300.github.io">Bill1300.github.io</a>
+          </div>
+          <!-- /Barra  final -->
+        </footer>
+        <!-- Footer -->
+    </body>
 </html>
