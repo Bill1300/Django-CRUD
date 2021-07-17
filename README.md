@@ -1,17 +1,20 @@
-Django-CRUD
+Aplicacao WEB desenvolvida em Python usando Django
 
-Instalar Django:
-``pip install django``
+1 - Instalar Python:
+``sudo apt-get install python3``
 
-Iniciar Projeto:
-``django-admin startproject WebApp`` (**WebApp** = nome do diretorio do projeto)
+2 - Instalar Pip:
+``sudo apt-get install python3-pip``
 
-Iniciar _localhost_:
+3 -Instalar Django:
+``python -m pip install Django``
+
+4 - Iniciar servidor:
 ``django-admin startapp application`` (**application** = nome do diretorio da aplicacao)
 
-Criar arquivo de migracao:
+5 - Criar arquivo de migracao:
 ``python manage.py makemigrations``
 
-Fazer a migracao dos modelos criados:
+6 - Fazer a migracao dos modelos criados:
 ``python manage.py migrate``
 
