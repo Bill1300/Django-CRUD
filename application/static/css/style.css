@@ -1,0 +1,47 @@
+* {
+}
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+.barraFinal {
+    color: rgba(255, 255, 255, 1);
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.info {
+    margin: 16px auto;
+    width: 50%;
+}
+.info p {
+    margin: 0;
+}
+.info p > b {
+    text-transform: uppercase;
+}
+.info a {
+    text-decoration: none;
+}
+.info button {
+    margin: 0 !important;
+}
+
+.container form {
+    margin: 16px;
+    padding: 0;
+}
+.container input {
+    width: 100%;
+}
+
+@media screen and (min-width: 600px) {
+    .container form {
+        width: 600px !important;
+        margin: 180px auto;
+        padding: 0;
+    }
+    .container input {
+        width: 100%;
+    }
+}
